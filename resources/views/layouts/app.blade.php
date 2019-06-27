@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/otros.css') }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #400000;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Mi estacionamiento
@@ -71,10 +72,25 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+<footer class="footer">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+          <div class="col-sm-4 col-md-4 col-lg-3 ">
+            <img style="width: 300px; height: 90px;" class="mx-auto d-block" src="/img/chechegroup.png" alt="">
+          </div>
+                <div class="col-sm-4 col-md-4 col-lg-6 text-center mr-auto ">
+                    <p class="footer--bottom-text p text-white">Sitio desarrollado por Cheche Group<br> Duoc UC - Sede Antonio Varas</p>
+                </div>
+          <div class="col-sm-4 col-md-4 col-lg-3  mr-auto">
+            <img style="height: 120px; widht:120;" class="mx-auto d-block" src="/img/estacionamiento.png" alt="">
+          </div>
+
+      </div>
+    </div>
+  </footer>
 </html>
