@@ -1,5 +1,15 @@
 .footer {
     background-image: url(../img/miestacionamiento/Footer.jpg);
 	background-repeat: repeat;
-	padding: 40px 0;
+	flex-shrink: 0;
+	position: absolute;
+	left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+html {
+    position: relative;
+    min-height: 100%;
 }
