@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/crud', 'CrudController@index');
+Route::get('/crud/{id}/edit', 'CrudController@edit');
+Route::patch('/crud/{id}', 'CrudController@update');
+Route::get('/crud/{id}/delete', 'CrudController@destroy');
+
+
