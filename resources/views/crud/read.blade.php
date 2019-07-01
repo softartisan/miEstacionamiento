@@ -5,7 +5,7 @@
 
 <div class="container">
     <table class="table table-striped">
-        <thead>
+        <thead class="bg-dark text-white">
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>

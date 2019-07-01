@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/otros.css') }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @yield('imports')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Mi estacionamiento</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,6 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('imports')
 </head>
 <body>  
     <div id="app">
@@ -44,11 +47,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @elseif(Auth::user()->usuario->tipo_usuario == 'administrador')
@@ -63,7 +66,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -73,7 +76,7 @@
                             </li>
                         @else
                         <li class="nav-item"><a class="nav-link" href="/home">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/crud">Arrendar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/arrendar">Arrendar</a></li>
                         <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->usuario->nombre_usuario }} <span class="caret"></span>
@@ -97,10 +100,25 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        <main class="py-4 my-5">
             @yield('content')
         </main>
     </div>
 </body>
+ <footer class="footer">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+          <div class="col-sm-4 col-md-4 col-lg-3 ">
+            <img style="width: 300px; height: 90px;" class="mx-auto d-block" src="/img/chechegroup.png" alt="">
+          </div>
+                <div class="col-sm-4 col-md-4 col-lg-6 text-center mr-auto ">
+                    <p class="footer--bottom-text p text-white">Sitio desarrollado por Cheche Group<br> Duoc UC - Sede Antonio Varas</p>
+                </div>
+          <div class="col-sm-4 col-md-4 col-lg-3  mr-auto">
+            <img style="height: 120px; widht:120;" class="mx-auto d-block" src="/img/estacionamiento.png" alt="">
+          </div>
+
+      </div>
+    </div>
+  </footer>
 </html>

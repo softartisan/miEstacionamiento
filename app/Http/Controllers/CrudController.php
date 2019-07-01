@@ -37,7 +37,7 @@ class CrudController extends Controller
     {
         //Preparando la data
         $data = request()->validate([
-            'password' => ['required', 'string', 'min:8','min:50', 'confirmed'],
+            'password' => ['required', 'string', 'min:8','max:50', 'confirmed'],
             'nombre' => ['required', 'string', 'max:50'],
             'apellido' => ['required', 'string', 'max:50'],
             'telefono' => ['required', 'string', 'max:20'],

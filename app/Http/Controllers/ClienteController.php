@@ -11,7 +11,7 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        return Usuario::all()->where( 'tipo_usuario', '!=', 'administrador' );
+        return Usuario::all()->where( 'tipo_usuario', '=', 'cliente' );
     }
 
     public function show(Usuario $usuario)
