@@ -17,8 +17,9 @@ class CreateEstacionamientosTable extends Migration
             $table->bigIncrements('id');
             $table->integer('precio_hora');
             $table->boolean('islibre');
-            $table->double('lat',9,9);
-            $table->double('lon',9,9);
+            $table->decimal('lat',10,7);
+            $table->decimal('lon',10,7);
+            $table->string('direccion');
             $table->unsignedInteger('usuario_id');
             $table->timestamps();
         });
