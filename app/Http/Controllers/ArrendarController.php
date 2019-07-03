@@ -65,10 +65,9 @@ class ArrendarController extends Controller
     {
         //Acá tienes que poner el IF si es rechazada o si se realiza la compra
         if($_SESSION['responseCode'] == '0'){
-          echo 'GRACIAS POR SU COMPRA';
-          return;
+            return view( 'arrendar.success');
         }else {
-          echo 'COMPRA FALLIDA';
+            return view( 'arrendar.fail');
         }
     }
 }
