@@ -36,12 +36,28 @@ class ArrendarController extends Controller
     {
         $bag = CertificationBagFactory::integrationWebpayNormal();
         $webpay = TransbankServiceFactory::normal($bag);
-
-        $webpay->addTransactionDetail(10000, 'Orden824201'); // Monto e identificador de la orden
+        $webpay->addTransactionDetail($estacionamiento->precio_hora, 'Orden824201'); // Monto e identificador de la orden
         // Debes además, registrar las URLs a las cuales volverá el cliente durante y después del flujo de Webpay
-        $response = $webpay->initTransaction('http://127.0.0.1:8000/response.php', 'http://127.0.0.1:8000/thanks');
+        $response = $webpay->initTransaction(url('/api/transbank/payment'), url('/api/transbank/success'));
         // Utilidad para generar formulario y realizar redirección POST
         echo RedirectorHelper::redirectHTML($response->url, $response->token);
       //  print_r($response);
+    }
+
+    public function webpayPayment()
+    {
+        $bag = CertificationBagFactory::integrationWebpayNormal();
+        $plus = TransbankServiceFactory::normal($bag);
+
+        $response = $plus->getTransactionResult();
+        $plus->acknowledgeTransaction();
+
+        return RedirectorHelper::redirectBackNormal($response->urlRedirection);
+    }
+
+    public  function success()
+    {
+        $response = array("status"=>"success");
+        echo \GuzzleHttp\json_encode($response);
     }
 }
