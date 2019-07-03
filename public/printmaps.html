@@ -1,14 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Google Maps JavaScript API</title>
+  <style>
+    html, body, #map-canvas {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map-canvas {
+	height: 75%;
+	width: 75%;
+}
+
+label {
+	padding: 20px 10px;
+	display: inline-block;
+	font-size: 1.5em;
+}
+
+input {
+	font-size: 0.75em;
+	padding: 10px;
+}
+  </style>
 </head>
 <body>
-  <input type="text" id="cantidad">
-  <p id="total"></p>
-  <script src="js/calculo.js"></script>
+<label for="">Address: <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104"></label><br>
+<label for="">Lat: <input type="text" class="latitude"></label>
+<label for="">Long: <input type="text" class="longitude"></label>
+<label for="">City <input type="text" class="reg-input-city" placeholder="City"></label>
+<div id="map-canvas"></div>
+<script src="js/mapa.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl8VWHE7KL4wcDz6tzOMTg17ZtAhsu8tA&libraries=places&callback=initialize"></script>
 </body>
 </html>
