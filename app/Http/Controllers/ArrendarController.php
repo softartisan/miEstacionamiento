@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+session_start();
 
 use Freshwork\Transbank\CertificationBagFactory;
 use Freshwork\Transbank\TransbankServiceFactory;
@@ -56,6 +56,7 @@ class ArrendarController extends Controller
         $bag = CertificationBagFactory::integrationWebpayNormal();
         $webpay = TransbankServiceFactory::normal($bag);
         $response = $webpay->getTransactionResult();
+        $_SESSION['responseCode'] = $response->detailOutput->responseCode;
         $webpay->acknowledgeTransaction();
         return RedirectorHelper::redirectBackNormal($response->urlRedirection);
     }
@@ -63,5 +64,11 @@ class ArrendarController extends Controller
     public  function finish()
     {
         //Acá tienes que poner el IF si es rechazada o si se realiza la compra
+        if($_SESSION['responseCode'] == '0'){
+          echo 'GRACIAS POR SU COMPRA';
+          return;
+        }else {
+          echo 'COMPRA FALLIDA';
+        }
     }
 }
