@@ -50,15 +50,12 @@ class ArrendarController extends Controller
         $webpay = TransbankServiceFactory::normal($bag);
 
         $response = $webpay->getTransactionResult();
-        //$webpay->acknowledgeTransaction();
+        $webpay->acknowledgeTransaction();
 
         return RedirectorHelper::redirectBackNormal($response->urlRedirection);
     }
 
     public  function thanks()
     {
-        //$response = array("status"=>"success");
-        //echo \GuzzleHttp\json_encode($response);
-        //return view('arrendar.show', compact('estacionamiento'));
     }
 }
