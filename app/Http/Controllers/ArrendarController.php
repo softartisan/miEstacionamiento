@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Freshwork\Transbank\CertificationBagFactory;
+use Freshwork\Transbank\TransbankServiceFactory;
+use Freshwork\Transbank\RedirectorHelper;
+
 use App\Estacionamiento;
 use Illuminate\Http\Request;
+
+include 'Z:\Users\Cheche\Documents\GitHub\MiEstacionamiento\vendor\autoload.php';
+
 
 class ArrendarController extends Controller
 {

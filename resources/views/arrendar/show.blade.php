@@ -21,8 +21,8 @@
             <div class="card-header">
               {{$estacionamiento->direccion}}
             </div>
-            <form action="/arrendar/{{$estacionamiento->id}}" method="post">
-                @csrf
+            <form action="/arrendar/{{$estacionamiento->id}}" method="POST">
+                @csrf <!-- {{ csrf_field() }} -->
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">Precio: <span id="precio">{{$estacionamiento->precio_hora}}</span></li>
                 <li class="list-group-item">Propietario: {{$estacionamiento->usuario->nombre_usuario}}</li>
@@ -33,9 +33,9 @@
                   <input type="text" id="cantidad" class="form-control">
                 </li>
                 <li class="list-group-item"><p id="total">Total a pagar: </p></li>
-                <button type="submit" class="btn btn-dark" id="boton">Arrendar Ahora</button>
-              </ul>
-           </form>
+            <button type="submit" class="btn btn-dark" id="boton">Arrendar Ahora</button>
+            </ul>
+          </form>
           </div>
     </div>
     <div class="col-md-6">

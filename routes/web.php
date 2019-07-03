@@ -28,4 +28,4 @@ Route::get('/crud/{id}/delete', 'CrudController@destroy');
 Route::get('/arrendar', 'ArrendarController@arrendar');
 Route::post('/arrendar/busqueda', 'ArrendarController@busqueda');
 Route::get('/arrendar/{estacionamiento}', 'ArrendarController@show');
-
+Route::post('/arrendar/{estacionamiento}', 'ArrendarController@venta');
