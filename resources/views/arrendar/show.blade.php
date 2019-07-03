@@ -9,13 +9,17 @@
             <div class="card-header">
             Estacionamiento
             </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">Precio: {{$estacionamiento->precio_hora}}</li>
-            <li class="list-group-item">Propietario: {{$estacionamiento->usuario->nombre_usuario}}</li>
-            <li class="list-group-item">Numero: {{$estacionamiento->usuario->telefono_usuario}}</li>
-            <li class="list-group-item">Numero: {{$estacionamiento->usuario->email_usuario}}</li>
-            <button class="btn btn-dark">Arrendar Ahora</button>
-            </ul>
+            <form action="/arrendar/{{$estacionamiento->id}}" method="POST">
+              @csrf <!-- {{ csrf_field() }} -->
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item">Precio: {{$estacionamiento->precio_hora}}</li>
+              <input type="hidden" name="token" value="{{csrf_token()}}">
+              <li class="list-group-item">Propietario: {{$estacionamiento->usuario->nombre_usuario}}</li>
+              <li class="list-group-item">Numero: {{$estacionamiento->usuario->telefono_usuario}}</li>
+              <li class="list-group-item">correo: {{$estacionamiento->usuario->email_usuario}}</li>
+              <button type="submit" class="btn btn-dark">Arrendar Ahora</button>
+              </ul>
+          </form>
           </div>
     </div>
     <div class="col-md-6">
