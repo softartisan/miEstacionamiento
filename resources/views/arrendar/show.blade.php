@@ -30,7 +30,12 @@
                 <li class="list-group-item">Email: {{$estacionamiento->usuario->email_usuario}}</li>
                 <li class="list-group-item">
                   <label for="cantidad">Cantidad de horas</label>
-                  <input type="text" id="cantidad" class="form-control">
+                  <input type="text" id="cantidad" name="cantidad" class="form-control">
+                  @error('cantidad')
+                  <span class="text-danger" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
                 </li>
                 <li class="list-group-item"><p id="total">Total a pagar: </p></li>
             <button type="submit" class="btn btn-dark" id="boton">Arrendar Ahora</button>

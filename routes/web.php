@@ -29,3 +29,6 @@ Route::get('/arrendar', 'ArrendarController@arrendar');
 Route::post('/arrendar/busqueda', 'ArrendarController@busqueda');
 Route::get('/arrendar/{estacionamiento}', 'ArrendarController@show');
 Route::post('/arrendar/{estacionamiento}', 'ArrendarController@venta');
+
+Route::post('/transaccion', 'ArrendarController@webpayPayment');
+Route::post('/finalizada', 'ArrendarController@finish');
