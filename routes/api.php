@@ -24,20 +24,4 @@ Route::post('cliente', 'ClienteController@store');
 Route::patch('cliente/{usuario}', 'ClienteController@update');
 Route::delete('cliente/{usuario}', 'ClienteController@delete');
 
-
-Route::group(['prefix'=>'transbank'],function (){
-
-    Route::get('venta',[
-        'uses'  =>'ArrendarController@venta',
-        'as'    =>'webpayplus'
-    ]);
-    Route::post('payment',[
-        'uses'  =>'ArrendarController@webpayPayment',
-        'as'    =>'webpayplusResponse'
-    ]);
-    //Route::post('thanks',[
-        //'uses'  =>'ArrendarController@thanks',
-       //'as'    =>'thanks'
-    //]);
-
-});
+Route::get('estacionamiento', 'EstacionamientoController@all');
