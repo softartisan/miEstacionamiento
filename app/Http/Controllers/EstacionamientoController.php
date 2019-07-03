@@ -9,6 +9,6 @@ class EstacionamientoController extends Controller
 {
     public function all()
     {
-        return Estacionamiento::all()->where('islibre','1');
+        return Estacionamiento::all();
     }
 }

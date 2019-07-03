@@ -67,9 +67,9 @@ class ArrendarController extends Controller
         //Acá tienes que poner el IF si es rechazada o si se realiza la compra
         if($_SESSION['responseCode'] == '0'){
             $idEstacionamiento = $_SESSION['orden'];
-            $estacionamiento = Estacionamiento::find($idEstacionamiento);
+            $estacionamiento = Estacionamiento::find($idEstacionamiento)->first();
 
-            $estacionamiento->islibre = 1;
+            $estacionamiento->islibre = false;
             $estacionamiento->save();
 
             $total = $_SESSION['total'];
