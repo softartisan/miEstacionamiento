@@ -21,18 +21,21 @@
             <div class="card-header">
               {{$estacionamiento->direccion}}
             </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">Precio: <span id="precio">{{$estacionamiento->precio_hora}}</span></li>
-            <li class="list-group-item">Propietario: {{$estacionamiento->usuario->nombre_usuario}}</li>
-            <li class="list-group-item">Numero: {{$estacionamiento->usuario->telefono_usuario}}</li>
-            <li class="list-group-item">Email: {{$estacionamiento->usuario->email_usuario}}</li>
-            <li class="list-group-item">
-              <label for="cantidad">Cantidad de horas</label>
-              <input type="text" id="cantidad" class="form-control">
-            </li>
-            <li class="list-group-item"><p id="total">Total a pagar: </p></li>
-            <button class="btn btn-dark" id="boton">Arrendar Ahora</button>
-            </ul>
+            <form action="/arrendar/{{$estacionamiento->id}}" method="post">
+                @csrf
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio: <span id="precio">{{$estacionamiento->precio_hora}}</span></li>
+                <li class="list-group-item">Propietario: {{$estacionamiento->usuario->nombre_usuario}}</li>
+                <li class="list-group-item">Numero: {{$estacionamiento->usuario->telefono_usuario}}</li>
+                <li class="list-group-item">Email: {{$estacionamiento->usuario->email_usuario}}</li>
+                <li class="list-group-item">
+                  <label for="cantidad">Cantidad de horas</label>
+                  <input type="text" id="cantidad" class="form-control">
+                </li>
+                <li class="list-group-item"><p id="total">Total a pagar: </p></li>
+                <button type="submit" class="btn btn-dark" id="boton">Arrendar Ahora</button>
+              </ul>
+           </form>
           </div>
     </div>
     <div class="col-md-6">
@@ -59,7 +62,7 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl8VWHE7KL4wcDz6tzOMTg17ZtAhsu8tA&callback=initMap">
 </script>
-  
+
 @endsection
 
 @section('jsimports')
