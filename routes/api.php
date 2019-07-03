@@ -26,14 +26,18 @@ Route::delete('cliente/{usuario}', 'ClienteController@delete');
 
 
 Route::group(['prefix'=>'transbank'],function (){
-
+  
+    Route::get('venta',[
+        'uses'  =>'ArrendarController@venta',
+        'as'    =>'webpayplus'
+    ]);
     Route::post('payment',[
         'uses'  =>'ArrendarController@webpayPayment',
         'as'    =>'webpayplusResponse'
     ]);
-    Route::post('success',[
-        'uses'  =>'ArrendarController@success',
-        'as'    =>'success'
+    Route::post('thanks',[
+        'uses'  =>'ArrendarController@thanks',
+        'as'    =>'thanks'
     ]);
 
 });
