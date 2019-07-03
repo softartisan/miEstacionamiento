@@ -44,6 +44,7 @@ class ArrendarController extends Controller
         $webpay = TransbankServiceFactory::normal($bag);
         $webpay->addTransactionDetail($valorAPagar, rand(1,99999)); // Monto e identificador de la orden
         $_SESSION['orden'] = $estacionamiento->id;
+        $_SESSION['total'] = $valorAPagar;
         // Debes además, registrar las URLs a las cuales volverá el cliente durante y después del flujo de Webpay
         $response = $webpay->initTransaction(url('/transaccion'), url('/finalizada'));
         // Utilidad para generar formulario y realizar redirección POST
@@ -71,6 +72,8 @@ class ArrendarController extends Controller
 
             $estacionamiento->islibre = 1;
             $estacionamiento->save();
+
+            $total = $_SESSION['total'];
 
             return view( 'arrendar.success', compact('estacionamiento'));
         }else {
