@@ -24,8 +24,7 @@ class ArrendarController extends Controller
     }
 
     public function busqueda(){
-        $estacionamientos = Estacionamiento::all();
-        return view( 'arrendar.busqueda',compact('estacionamientos'));
+        return view( 'arrendar.busqueda');
     }
 
     public function show(Estacionamiento $estacionamiento){

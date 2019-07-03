@@ -24,6 +24,8 @@ Route::get('/crud/{id}/edit', 'CrudController@edit');
 Route::patch('/crud/{id}', 'CrudController@update');
 Route::get('/crud/{id}/delete', 'CrudController@destroy');
 
+Route::get('/publicar', 'PublicarController@estacionamiento');
+Route::post('/publicar', 'PublicarController@publicar');
 
 Route::get('/arrendar', 'ArrendarController@arrendar');
 Route::post('/arrendar/busqueda', 'ArrendarController@busqueda');
