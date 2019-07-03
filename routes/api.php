@@ -23,3 +23,5 @@ Route::get('cliente/{usuario}', 'ClienteController@show');
 Route::post('cliente', 'ClienteController@store');
 Route::patch('cliente/{usuario}', 'ClienteController@update');
 Route::delete('cliente/{usuario}', 'ClienteController@delete');
+
+Route::get('estacionamiento', 'EstacionamientoController@all');
