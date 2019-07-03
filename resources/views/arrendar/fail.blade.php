@@ -11,7 +11,7 @@
                 <div class="col-md-6">
                         <h1 class="display-4">Pago fallido</h1>
                         <p class="lead">{{ Auth::user()->usuario->nombre_usuario}} {{Auth::user()->usuario->apellido_usuario}}</p>
-                        <p></p>
+                        <p {{$estacionamiento->direccion}}></p>
 
                 </div>
             </div>

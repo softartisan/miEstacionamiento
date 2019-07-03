@@ -42,7 +42,8 @@ class ArrendarController extends Controller
 
         $bag = CertificationBagFactory::integrationWebpayNormal();
         $webpay = TransbankServiceFactory::normal($bag);
-        $webpay->addTransactionDetail($valorAPagar, 'Orden824201'); // Monto e identificador de la orden
+        $webpay->addTransactionDetail($valorAPagar, rand(1,99999)); // Monto e identificador de la orden
+        $_SESSION['orden'] = $estacionamiento->id;
         // Debes además, registrar las URLs a las cuales volverá el cliente durante y después del flujo de Webpay
         $response = $webpay->initTransaction(url('/transaccion'), url('/finalizada'));
         // Utilidad para generar formulario y realizar redirección POST
@@ -65,7 +66,13 @@ class ArrendarController extends Controller
     {
         //Acá tienes que poner el IF si es rechazada o si se realiza la compra
         if($_SESSION['responseCode'] == '0'){
-            return view( 'arrendar.success');
+            $idEstacionamiento = $_SESSION['orden'];
+            $estacionamiento = Estacionamiento::find($idEstacionamiento);
+
+            $estacionamiento->islibre = 1;
+            $estacionamiento->save();
+
+            return view( 'arrendar.success', compact('estacionamiento'));
         }else {
             return view( 'arrendar.fail');
         }
